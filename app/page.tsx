@@ -178,7 +178,9 @@ export default function Home() {
                 <h2 id="oss-tittel" className="h2">
                   {couple}
                 </h2>
-                <p>{about}</p>
+                {about.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
               </div>
               <Image
                 src="/images/tull.jpg"
