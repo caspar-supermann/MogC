@@ -4,6 +4,7 @@ import Rsvp from "./components/Rsvp";
 import {
   about,
   gallery,
+  menu,
   practical,
   program,
   toastmaster,
@@ -110,6 +111,21 @@ export default function Home() {
                 </li>
               ))}
             </ol>
+
+            <div id="meny" className="menu-card">
+              <p className="eyebrow">Foreløpig meny</p>
+              <h3 id="meny-tittel" className="menu-title">
+                Middag
+              </h3>
+              <LeafDivider />
+              {menu.map((m) => (
+                <div key={m.course} className="menu-course">
+                  <p className="menu-course-name">{m.course}</p>
+                  <p className="menu-dish">{m.dish}</p>
+                  <p className="menu-desc">{m.description}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 

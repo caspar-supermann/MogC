@@ -324,6 +324,63 @@ button {
   font-size: 0.95rem;
 }
 
+/* Menu */
+.menu-card {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 72px 40px 56px;
+  background: var(--paper);
+  border: 1px solid var(--olive-line);
+  border-radius: 320px 320px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+}
+.menu-title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 2.5rem;
+  line-height: 1.1;
+}
+.menu-course {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  max-width: 440px;
+  padding-top: 18px;
+}
+.menu-course p {
+  margin: 0;
+}
+.menu-course-name {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--rust);
+}
+.menu-dish {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.6rem;
+  line-height: 1.25;
+  color: var(--olive-dark);
+}
+.menu-desc {
+  font-size: 0.98rem;
+}
+@media (max-width: 600px) {
+  .menu-card {
+    padding: 56px 22px 40px;
+    border-radius: 200px 200px 12px 12px;
+  }
+}
+
 /* Venue */
 .venue {
   background: var(--olive);

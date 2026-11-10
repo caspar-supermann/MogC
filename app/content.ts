@@ -27,8 +27,27 @@ export const welcomeText =
 export const program = [
   { time: "[kl.]", title: "Vielse", text: "Seremonien holdes på Kokkeplassen og utføres av varaordfører i Arendal, Inger Brokka de Ruiter. [Kort beskrivelse – ute/inne, hvor gjestene samles.]" },
   { time: "[kl.]", title: "Mottakelse", text: "[Bobler, mingling og bilder med brudeparet.]" },
-  { time: "[kl.]", title: "Middag", text: "[Middag, taler og kake.]" },
+  { time: "[kl.]", title: "Middag", text: "Tre retters middag og taler. Se menyen under." },
   { time: "[kl.]", title: "Fest", text: "[Brudevals, dans og nattmat.]" },
+];
+
+export const menu = [
+  {
+    course: "Forrett",
+    dish: "Smørstekt kamskjell",
+    description: "Sellerikrem, lune terninger av eple og sellerirot, kremet eplesaus og dill.",
+  },
+  {
+    course: "Hovedrett",
+    dish: "Mørbrad av kalv",
+    description: "Kraftig soppsaus, stekt østerssopp med spinat og ramsløk, ertekrem og poteter.",
+  },
+  {
+    course: "Dessert",
+    dish: "Panna cotta",
+    description:
+      "Friske bringebær, sprø hvit sjokolade smaksatt med sitronverbena, bringebærsorbet og frysetørket bringebær.",
+  },
 ];
 
 export type InfoCard = { title: string; text: string; link?: { label: string; href: string } };
