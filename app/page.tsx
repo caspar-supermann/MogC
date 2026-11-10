@@ -32,6 +32,7 @@ export default function Home() {
 
   return (
     <>
+      <div className="site-header">
       <nav className="container nav" aria-label="Hovedmeny">
         <a href="#top" className="nav-logo" aria-label={`${couple} – til toppen`}>
           <Image
@@ -54,6 +55,7 @@ export default function Home() {
           </a>
         </div>
       </nav>
+      </div>
 
       <main>
         <header id="top" className="container hero">
