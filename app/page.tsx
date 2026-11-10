@@ -33,8 +33,16 @@ export default function Home() {
   return (
     <>
       <nav className="container nav" aria-label="Hovedmeny">
-        <a href="#top" className="nav-logo">
-          M &amp; C
+        <a href="#top" className="nav-logo" aria-label={`${couple} – til toppen`}>
+          <Image
+            src="/images/monogram-emblem.png"
+            alt=""
+            width={600}
+            height={578}
+            sizes="96px"
+            priority
+            className="nav-logo-img"
+          />
         </a>
         <div className="nav-links">
           <a href="#program">Program</a>
@@ -120,7 +128,7 @@ export default function Home() {
               </p>
               <div className="venue-actions">
                 <a href={venue.website} className="btn btn-light" target="_blank" rel="noopener noreferrer">
-                  kokkeplassen.no
+                  kokkeplassengard.no
                 </a>
                 <a href={venue.mapsUrl} className="btn btn-ghost-light" target="_blank" rel="noopener noreferrer">
                   Vis i kart

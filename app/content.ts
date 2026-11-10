@@ -14,7 +14,7 @@ export const venue = {
   name: "Kokkeplassen",
   street: "Vesterveien 134",
   postal: "4817 His",
-  website: "https://kokkeplassen.no",
+  website: "https://www.kokkeplassengard.no/",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Kokkeplassen%2C%20Vesterveien%20134%2C%204817%20His",
   intro:

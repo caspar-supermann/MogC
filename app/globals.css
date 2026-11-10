@@ -153,12 +153,17 @@ button {
   padding-bottom: 24px;
 }
 .nav-logo {
-  font-family: var(--serif);
-  font-size: 1.6rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-decoration: none;
-  color: var(--olive);
+  display: block;
+  line-height: 0;
+}
+.nav-logo-img {
+  width: 84px;
+  height: auto;
+}
+@media (max-width: 600px) {
+  .nav-logo-img {
+    width: 64px;
+  }
 }
 .nav-links {
   display: flex;
