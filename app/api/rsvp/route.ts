@@ -79,6 +79,82 @@ async function sendEmail(svar: Svar) {
   return { ok: true as const };
 }
 
+// Kopi til gjesten. Krever egen avsender på et verifisert domene (RSVP_EMAIL_FROM),
+// fordi Resends testavsender bare kan sende til eieren av kontoen.
+async function sendGuestCopy(svar: Svar) {
+  const key = process.env.RESEND_API_KEY;
+  const from = process.env.RSVP_EMAIL_FROM;
+  if (!key || !from) return { skipped: true as const };
+
+  const replyTo =
+    process.env.RSVP_REPLY_TO ||
+    (process.env.RSVP_EMAIL_TO || "").split(",").map((s) => s.trim()).filter(Boolean)[0];
+
+  const rows: [string, string][] = [
+    ["Navn", svar.navn],
+    ["Svar", svar.kommer ? "Ja, jeg kommer" : "Kan dessverre ikke"],
+    ...(svar.kommer
+      ? ([
+          ["Allergier / mat", svar.allergier || "–"],
+          ["Ønskesang", svar.sang || "–"],
+        ] as [string, string][])
+      : []),
+    ["Hilsen", svar.hilsen || "–"],
+  ];
+
+  const intro = svar.kommer
+    ? "Tusen takk for svaret – så gøy at du kommer! Vi gleder oss til å feire med deg på Kokkeplassen lørdag 4. september 2027."
+    : "Tusen takk for at du svarte. Så synd at du ikke kan komme – vi kommer til å tenke på deg den dagen.";
+
+  const site = "https://www.maritaogcaspar.no";
+  const html = `
+<div style="background:#FBF7F0;padding:32px 16px">
+  <div style="max-width:560px;margin:0 auto;background:#FFFDF9;border:1px solid #DCD8BC;border-radius:16px;padding:36px 28px;font-family:Georgia,serif;color:#3A381A">
+    <p style="margin:0 0 4px;font-family:Arial,sans-serif;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#8A5A44">Marita &amp; Caspar · 04.09.2027</p>
+    <h1 style="margin:0 0 16px;font-weight:500;font-size:28px;color:#5B5726">Kopi av svaret ditt</h1>
+    <p style="margin:0 0 20px;font-size:17px;line-height:1.6">Hei ${esc(svar.navn)}!<br>${esc(intro)}</p>
+    <table style="border-collapse:collapse;width:100%;font-family:Arial,sans-serif;font-size:15px;margin-bottom:20px">
+      ${rows
+        .map(
+          ([k, v]) =>
+            `<tr><td style="padding:8px 12px 8px 0;color:#8A5A44;vertical-align:top;white-space:nowrap;border-top:1px solid #EEEADA">${esc(k)}</td><td style="padding:8px 0;white-space:pre-wrap;border-top:1px solid #EEEADA">${esc(v)}</td></tr>`
+        )
+        .join("")}
+    </table>
+    <p style="margin:0 0 20px;font-family:Arial,sans-serif;font-size:14px;line-height:1.6">Vil du endre noe? Svar på denne e-posten, eller send inn skjemaet på nytt.</p>
+    <a href="${site}" style="display:inline-block;padding:12px 26px;background:#5B5726;color:#FBF7F0;text-decoration:none;border-radius:999px;font-family:Arial,sans-serif;font-size:13px;letter-spacing:2px;text-transform:uppercase">Til bryllupssiden</a>
+    <p style="margin:28px 0 0;font-style:italic;font-size:20px;color:#5B5726">Klem fra Marita &amp; Caspar</p>
+  </div>
+</div>`;
+  const text = [
+    `Hei ${svar.navn}!`,
+    "",
+    intro,
+    "",
+    ...rows.map(([k, v]) => `${k}: ${v}`),
+    "",
+    "Vil du endre noe? Svar på denne e-posten, eller send inn skjemaet på nytt.",
+    site,
+    "",
+    "Klem fra Marita & Caspar",
+  ].join("\n");
+
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from,
+      to: [svar.epost],
+      ...(replyTo ? { reply_to: replyTo } : {}),
+      subject: "Kopi av svaret ditt – Marita & Caspar 04.09.2027",
+      html,
+      text,
+    }),
+  });
+  if (!res.ok) console.error("Kopi til gjest feilet", res.status, await res.text());
+  return { ok: res.ok };
+}
+
 async function sendWebhook(svar: Svar) {
   const url = process.env.RSVP_WEBHOOK_URL;
   if (!url) return { skipped: true as const };
@@ -123,6 +199,10 @@ export async function POST(req: Request) {
   if (configured && !delivered) {
     return NextResponse.json({ ok: false }, { status: 502 });
   }
+
+  // Kopien til gjesten er en bonus: feiler den, er svaret likevel registrert.
+  await sendGuestCopy(svar).catch((e) => console.error("Kopi til gjest feilet", e));
+
   return NextResponse.json({ ok: true });
 }
 
@@ -133,6 +213,7 @@ export async function GET() {
     harApiNokkel: Boolean(process.env.RESEND_API_KEY),
     harMottaker: Boolean(process.env.RSVP_EMAIL_TO),
     egenAvsender: Boolean(process.env.RSVP_EMAIL_FROM),
+    kopiTilGjest: Boolean(process.env.RESEND_API_KEY && process.env.RSVP_EMAIL_FROM),
     webhookKonfigurert: Boolean(process.env.RSVP_WEBHOOK_URL),
   });
 }

@@ -29,7 +29,8 @@ Skjemaet sender svar til `/api/rsvp`, som sender en e-post per svar via [Resend]
 | --- | --- |
 | `RESEND_API_KEY` | API-nøkkelen fra Resend |
 | `RSVP_EMAIL_TO` | Adressen svarene skal til (flere kan skilles med komma) |
-| `RSVP_EMAIL_FROM` | Valgfri. F.eks. `Bryllup <svar@maritaogcaspar.no>` når domenet er verifisert i Resend |
+| `RSVP_EMAIL_FROM` | Valgfri. F.eks. `Marita & Caspar <svar@maritaogcaspar.no>` når domenet er verifisert i Resend. Når denne er satt, får også gjesten en kopi av svaret sitt. |
+| `RSVP_REPLY_TO` | Valgfri. Adressen gjestene svarer til fra kopien (standard: første adresse i `RSVP_EMAIL_TO`) |
 
 Uten egen avsender brukes Resends testavsender, som bare kan sende til e-posten Resend-kontoen er registrert med.
 
