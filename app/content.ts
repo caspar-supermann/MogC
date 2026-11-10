@@ -22,7 +22,7 @@ export const venue = {
 };
 
 export const welcomeText =
-  "[Velkomsttekst fra Marita og Caspar – et par setninger om hvor glade dere er for å feire dagen med familie og venner, og at all informasjonen gjestene trenger finnes på denne siden.]";
+  "Det som startet med en motorsykkeltur til Arendal, ender med et ja på samme kant av landet. Den 4. september samler vi alle vi er glade i på Kokkeplassen – til vielse, god mat, varme taler, mye latter og dans til langt på natt. Her finner du alt du trenger å vite. Vi gleder oss vilt til å feire med deg!";
 
 export const program = [
   { time: "[kl.]", title: "Vielse", text: "Seremonien holdes på Kokkeplassen og utføres av varaordfører i Arendal, Inger Brokka de Ruiter. [Kort beskrivelse – ute/inne, hvor gjestene samles.]" },
