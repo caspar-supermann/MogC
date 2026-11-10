@@ -25,7 +25,7 @@ export const welcomeText =
   "[Velkomsttekst fra Marita og Caspar – et par setninger om hvor glade dere er for å feire dagen med familie og venner, og at all informasjonen gjestene trenger finnes på denne siden.]";
 
 export const program = [
-  { time: "[kl.]", title: "Vielse", text: "Seremonien holdes på Kokkeplassen. [Kort beskrivelse – ute/inne, hvor gjestene samles.]" },
+  { time: "[kl.]", title: "Vielse", text: "Seremonien holdes på Kokkeplassen og utføres av varaordfører i Arendal, Inger Brokka de Ruiter. [Kort beskrivelse – ute/inne, hvor gjestene samles.]" },
   { time: "[kl.]", title: "Mottakelse", text: "[Bobler, mingling og bilder med brudeparet.]" },
   { time: "[kl.]", title: "Middag", text: "[Middag, taler og kake.]" },
   { time: "[kl.]", title: "Fest", text: "[Brudevals, dans og nattmat.]" },
