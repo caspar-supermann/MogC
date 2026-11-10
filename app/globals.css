@@ -531,6 +531,14 @@ button {
   color: var(--ivory);
   border-color: var(--olive);
 }
+.tease-note {
+  flex-basis: 100%;
+  margin: 4px 0 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--rust);
+}
 .rsvp-submit {
   align-self: center;
   padding-left: 44px;

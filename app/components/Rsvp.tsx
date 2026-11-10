@@ -4,8 +4,13 @@ import { useState, type FormEvent } from "react";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
+const MAX_TEASES = 3;
+
 export default function Rsvp() {
   const [attending, setAttending] = useState(true);
+  const [teasing, setTeasing] = useState(false);
+  const [tries, setTries] = useState(0);
+  const [gaveUp, setGaveUp] = useState(false);
   const [status, setStatus] = useState<Status>("idle");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
@@ -67,11 +72,32 @@ export default function Rsvp() {
         <button
           type="button"
           className="choice-btn"
-          aria-pressed={!attending}
-          onClick={() => setAttending(false)}
+          aria-pressed={!attending && !teasing}
+          onPointerEnter={(e) => {
+            // Lite påskeegg: med mus forvandles knappen til «Ja» noen ganger før den gir seg.
+            if (e.pointerType !== "mouse" || gaveUp) return;
+            const next = tries + 1;
+            setTries(next);
+            if (next > MAX_TEASES) setGaveUp(true);
+            else setTeasing(true);
+          }}
+          onPointerLeave={() => setTeasing(false)}
+          onClick={() => {
+            if (teasing) {
+              setAttending(true);
+              setTeasing(false);
+            } else {
+              setAttending(false);
+            }
+          }}
         >
-          Kan dessverre ikke
+          {teasing ? "Ja, jeg kommer!" : "Kan dessverre ikke"}
         </button>
+        {gaveUp && attending && (
+          <p className="tease-note" aria-live="polite">
+            Ok, ok … vi skjønner tegningen. Du kan trykke nå.
+          </p>
+        )}
       </fieldset>
 
       {attending && (

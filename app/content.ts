@@ -61,7 +61,7 @@ export const practical: InfoCard[] = [
 
 export const about = [
   "Det hele startet med en motorsykkeltur til Arendal – og det ble kjærlighet ved første blikk. Resten er, som de sier, historie.",
-  "Siden har vi samlet på kilometer sammen: i løpesko, på tur, på motorsykkel og på reise. Vi er lekne, livsglade og sjelden i ro, og dagen avsluttes gjerne med et godt glass vin – eller en fotballkamp med høylytte kommentarer.",
+  "Siden har vi samlet på kilometer sammen: i løpesko, på tur, på motorsykkel og på reise. Vi er lekne, livsglade og sjelden i ro, og dagen avsluttes gjerne med et godt glass vin – eller en boks Pepsi Max med ro i stuen.",
   "Frieriet fant sted på toppen av Mount Ulfsryggen, besteget helt uten ekstra oksygen. Svaret ble ja, og nå gleder vi oss til å feire det med dere – passende nok i Arendal, der alt begynte.",
 ];
 
