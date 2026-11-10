@@ -99,6 +99,7 @@ const g = (file: string, alt: string, width = 1050, height = 1400): GalleryImage
 
 export const gallery: GalleryImage[] = [
   g("13.jpg", "Marita og Caspar i solnedgang ved sjøen"),
+  g("25.jpg", "Marita og Caspar i motorsykkeldress på tur", 768, 1024),
   g("10.jpg", "Marita og Caspar klatrer opp et bratt svaberg"),
   g("07.jpg", "Marita og Caspar pyntet i dress og kjole"),
   g("16.jpg", "Marita og Caspar i fjellsiden med dalen bak seg", 1400, 1050),
@@ -108,6 +109,7 @@ export const gallery: GalleryImage[] = [
   g("12.jpg", "Marita og Caspar på en steinete fjelltopp"),
   g("02.jpg", "Marita og Caspar under grønne trær"),
   g("19.jpg", "Marita og Caspar med medaljer fra Oslo halvmaraton"),
+  g("24.jpg", "Marita og Caspar med startnummer og medaljer etter Oslo maraton", 724, 1086),
   g("05.jpg", "Marita og Caspar på en klippe over havet"),
   g("08.jpg", "Marita og Caspar foran blomstrende rhododendron"),
   g("21.jpg", "Marita og Caspar under et tak av gamle tømmerstokker", 665, 1182),
@@ -117,6 +119,7 @@ export const gallery: GalleryImage[] = [
   g("20.jpg", "Marita og Caspar i alpinbakken"),
   g("01.jpg", "Marita og Caspar på svabergene ved sjøen"),
   g("11.jpg", "Marita og Caspar i en vinkjeller"),
+  g("26.jpg", "Marita og Caspar med motorsykkelhjelmer på ferja", 768, 1024),
   g("17.jpg", "Marita og Caspar i solnedgang på stranda"),
   g("03.jpg", "Marita og Caspar på fjelltur med utsikt over vannet"),
   g("15.jpg", "Marita og Caspar på løpetur i skogen"),
