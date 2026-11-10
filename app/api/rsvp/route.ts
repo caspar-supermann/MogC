@@ -125,3 +125,14 @@ export async function POST(req: Request) {
   }
   return NextResponse.json({ ok: true });
 }
+
+// Enkel statussjekk: viser om e-post/webhook er konfigurert (aldri selve verdiene).
+export async function GET() {
+  return NextResponse.json({
+    epostKonfigurert: Boolean(process.env.RESEND_API_KEY && process.env.RSVP_EMAIL_TO),
+    harApiNokkel: Boolean(process.env.RESEND_API_KEY),
+    harMottaker: Boolean(process.env.RSVP_EMAIL_TO),
+    egenAvsender: Boolean(process.env.RSVP_EMAIL_FROM),
+    webhookKonfigurert: Boolean(process.env.RSVP_WEBHOOK_URL),
+  });
+}
