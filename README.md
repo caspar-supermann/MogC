@@ -23,9 +23,17 @@ Farger og typografi ligger i `app/globals.css` (fersken og olivengrønt, Cormora
 
 ## Svarskjema (RSVP)
 
-Skjemaet sender svar til `/api/rsvp`. Sett miljøvariabelen `RSVP_WEBHOOK_URL` i Vercel (Project → Settings → Environment Variables) for å sende svarene videre, f.eks. til et Google Sheet via Apps Script, Make, Zapier eller Slack.
+Skjemaet sender svar til `/api/rsvp`, som sender en e-post per svar via [Resend](https://resend.com). Sett disse i Vercel (Project → Settings → Environment Variables):
 
-Uten `RSVP_WEBHOOK_URL` blir svarene bare logget i Vercel-loggen.
+| Variabel | Verdi |
+| --- | --- |
+| `RESEND_API_KEY` | API-nøkkelen fra Resend |
+| `RSVP_EMAIL_TO` | Adressen svarene skal til (flere kan skilles med komma) |
+| `RSVP_EMAIL_FROM` | Valgfri. F.eks. `Bryllup <svar@maritaogcaspar.no>` når domenet er verifisert i Resend |
+
+Uten egen avsender brukes Resends testavsender, som bare kan sende til e-posten Resend-kontoen er registrert med.
+
+Valgfritt: `RSVP_WEBHOOK_URL` sender svarene i tillegg til f.eks. et Google Sheet. Alle svar logges også i Vercel-loggen.
 
 ## Deploy til Vercel
 
