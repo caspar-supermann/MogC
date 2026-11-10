@@ -201,11 +201,11 @@ export default function Home() {
                 ))}
               </div>
               <Image
-                src="/images/tull.jpg"
-                alt="Marita og Caspar tuller foran kameraet"
-                width={665}
-                height={1182}
-                sizes="320px"
+                src="/images/vingard.jpg"
+                alt="Marita og Caspar smiler kinn mot kinn i en vingård"
+                width={1200}
+                height={1600}
+                sizes="(max-width: 600px) 90vw, 320px"
                 className="about-portrait"
               />
             </div>
