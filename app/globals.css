@@ -505,17 +505,142 @@ button {
   object-fit: cover;
   border-radius: 180px 180px 16px 16px;
 }
-.gallery {
+/* Mosaikk */
+.mosaic-wrap {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 20px;
 }
-.gallery img {
-  flex: 1 1 240px;
-  min-width: 0;
-  height: 360px;
-  object-fit: cover;
+.mosaic-eyebrow {
+  text-align: center;
+}
+.mosaic {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  columns: 4 240px;
+  column-gap: 16px;
+}
+.mosaic li {
+  break-inside: avoid;
+  margin-bottom: 16px;
+}
+.mosaic-item {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: var(--olive-line);
   border-radius: 12px;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+.mosaic-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease, opacity 0.3s;
+}
+.mosaic-item:hover img {
+  transform: scale(1.03);
+}
+.mosaic li:nth-child(5n + 2) .mosaic-item {
+  border-radius: 140px 140px 12px 12px;
+}
+@media (max-width: 600px) {
+  .mosaic {
+    columns: 2;
+    column-gap: 10px;
+  }
+  .mosaic li {
+    margin-bottom: 10px;
+  }
+  .mosaic li:nth-child(5n + 2) .mosaic-item {
+    border-radius: 90px 90px 10px 10px;
+  }
+}
+
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(36, 34, 16, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 72px;
+}
+.lightbox-figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 100%;
+  max-height: 100%;
+}
+.lightbox-img {
+  width: auto;
+  height: auto;
+  max-width: min(1100px, 100%);
+  max-height: calc(100vh - 100px);
+  border-radius: 8px;
+  object-fit: contain;
+}
+.lightbox-count {
+  color: #f1eedf;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+.lightbox-btn {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  border-radius: 999px;
+  border: 1px solid rgba(251, 247, 240, 0.4);
+  background: rgba(251, 247, 240, 0.08);
+  color: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.lightbox-btn:hover {
+  background: rgba(251, 247, 240, 0.2);
+}
+.lightbox-close {
+  top: 16px;
+  right: 16px;
+}
+.lightbox-prev {
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lightbox-next {
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+@media (max-width: 600px) {
+  .lightbox {
+    padding: 72px 12px;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    top: auto;
+    bottom: 16px;
+    transform: none;
+  }
+  .lightbox-prev {
+    left: calc(50% - 60px);
+  }
+  .lightbox-next {
+    right: calc(50% - 60px);
+  }
+  .lightbox-img {
+    max-height: calc(100vh - 170px);
+  }
 }
 
 /* RSVP */

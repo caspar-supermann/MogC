@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Countdown from "./components/Countdown";
+import Mosaic from "./components/Mosaic";
 import Rsvp from "./components/Rsvp";
 import {
   about,
@@ -209,18 +210,9 @@ export default function Home() {
                 className="about-portrait"
               />
             </div>
-            <div className="gallery">
-              {gallery.map((g) => (
-                <Image
-                  key={g.src}
-                  src={g.src}
-                  alt={g.alt}
-                  width={665}
-                  height={1182}
-                  sizes="(max-width: 600px) 50vw, 300px"
-                  style={{ objectPosition: g.position }}
-                />
-              ))}
+            <div className="mosaic-wrap">
+              <p className="eyebrow mosaic-eyebrow">Øyeblikk sammen</p>
+              <Mosaic images={gallery} />
             </div>
           </div>
         </section>

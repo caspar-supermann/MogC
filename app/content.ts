@@ -86,9 +86,39 @@ export const about = [
 
 export const toastmaster = "Kontakt toastmaster [navn] på [telefon / e-post]";
 
-export const gallery = [
-  { src: "/images/fjell.jpg", alt: "Marita og Caspar på fjelltur", position: "center" },
-  { src: "/images/hytte.jpg", alt: "Marita og Caspar under et tak av gamle tømmerstokker", position: "center 30%" },
-  { src: "/images/sol.jpg", alt: "Marita og Caspar med solbriller i sola", position: "center 40%" },
-  { src: "/images/hjemme.jpg", alt: "Marita og Caspar smiler innendørs", position: "center 45%" },
+// Bildene i mosaikken. Legg nye bilder i public/images/galleri/ og føy dem til her.
+// width/height er bildets mål i piksler (brukes til å beholde formatet).
+export type GalleryImage = { src: string; alt: string; width: number; height: number };
+
+const g = (file: string, alt: string, width = 1050, height = 1400): GalleryImage => ({
+  src: `/images/galleri/${file}`,
+  alt,
+  width,
+  height,
+});
+
+export const gallery: GalleryImage[] = [
+  g("13.jpg", "Marita og Caspar i solnedgang ved sjøen"),
+  g("10.jpg", "Marita og Caspar klatrer opp et bratt svaberg"),
+  g("07.jpg", "Marita og Caspar pyntet i dress og kjole"),
+  g("16.jpg", "Marita og Caspar i fjellsiden med dalen bak seg", 1400, 1050),
+  g("14.jpg", "Marita og Caspar med medaljer etter 50 km ultraløp", 787, 1400),
+  g("04.jpg", "Marita og Caspar i bilen på vei på ferie", 787, 1400),
+  g("22.jpg", "Marita og Caspar med solbriller i sola", 665, 1182),
+  g("12.jpg", "Marita og Caspar på en steinete fjelltopp"),
+  g("02.jpg", "Marita og Caspar under grønne trær"),
+  g("19.jpg", "Marita og Caspar med medaljer fra Oslo halvmaraton"),
+  g("05.jpg", "Marita og Caspar på en klippe over havet"),
+  g("08.jpg", "Marita og Caspar foran blomstrende rhododendron"),
+  g("21.jpg", "Marita og Caspar under et tak av gamle tømmerstokker", 665, 1182),
+  g("18.jpg", "Marita og Caspar etter en løpetur"),
+  g("09.jpg", "Marita og Caspar ved målgang med medaljer", 1303, 1400),
+  g("06.jpg", "Marita og Caspar på en hvit saltsjø", 787, 1400),
+  g("20.jpg", "Marita og Caspar i alpinbakken"),
+  g("01.jpg", "Marita og Caspar på svabergene ved sjøen"),
+  g("11.jpg", "Marita og Caspar i en vinkjeller"),
+  g("17.jpg", "Marita og Caspar i solnedgang på stranda"),
+  g("03.jpg", "Marita og Caspar på fjelltur med utsikt over vannet"),
+  g("15.jpg", "Marita og Caspar på løpetur i skogen"),
+  g("23.jpg", "Marita og Caspar smiler innendørs", 665, 1182),
 ];
