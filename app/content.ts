@@ -49,7 +49,7 @@ export const practical: InfoCard[] = [
   },
   {
     title: "Antrekk",
-    text: "[Dresscode – f.eks. mørk dress / sommerlig pent. Gjerne et hint om fargetemaet fersken og oliven.]",
+    text: "Mørk dress/smoking. Ta gjerne med et hint av fargetemaet vårt, fersken og oliven.",
   },
   { title: "Ønskeliste", text: "[Lenke til ønskeliste eller tekst om gaver.]" },
   {
